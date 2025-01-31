@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faStar, faStarHalfStroke, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faStar, faStarHalfStroke, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 function ProductDetails() {
     const [product, setProduct] = useState({})
     const [showMore, setShowMore] = useState(false)
@@ -35,6 +35,7 @@ function ProductDetails() {
 
     const handleReviews = () => {
         setisReviewShowing((prevValue) => !prevValue)
+
     }
 
     const getStars = (rating) => {
@@ -109,14 +110,14 @@ function ProductDetails() {
                 <div>
 
                     <span className='font-bold'>Price : ${product.price}</span>
-                    <p className='md:inline'> <span className='bg-yellow-200 p-1  animate-ping font-bold  md:inline' >Now {product.discountPercentage
+                    <p className='md:inline'> <span className='bg-yellow-200 p-1  animate-ping font-bold  md:inline' style={{ animationDuration: '3s' }}>Now {product.discountPercentage
                     }% discount</span> </p>
 
                     <p>Rating : {product.rating}</p>
                     <p className='text-red-500 font-normal'>{product?.returnPolicy}</p>
                     <button className="btn btn-sm mt-1  btn-success">Add to Cart</button>
 
-                    <p className='mt-2'>Reviews <span onClick={handleReviews} className='font-semibold text-red-700 hover:cursor-pointer hover:text-blue-800 mr-2'>({product?.reviews?.length})<FontAwesomeIcon icon={faCaretDown} /></span> sfdf</p>
+                    <p className='mt-2'>Reviews <span onClick={handleReviews} className='font-semibold text-red-700 hover:cursor-pointer hover:text-blue-800 mr-4'>({product?.reviews?.length})<span className='px-2'><FontAwesomeIcon className='text-2xl animate-bounce' icon={isReviewShowing ? faCaretUp : faCaretDown} /></span> </span></p>
                     <div className='h-48  overflow-y-auto p-2 rounded-md'>
                         {
                             isReviewShowing && (
