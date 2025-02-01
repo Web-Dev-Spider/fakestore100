@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faStar, faStarHalfStroke, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+
 function ProductDetails() {
     const [product, setProduct] = useState({})
     const [showMore, setShowMore] = useState(false)
@@ -102,6 +103,25 @@ function ProductDetails() {
         // using grid layout in tailwindcss
 
         <div className='grid grid-cols-1 md:grid-cols-3 p-2 md:p-4 flex-col md:flex-row gap-8 mt-3 justify-center items-center h-3/4 drop-shadow-xl w-3/4 mx-auto'>
+
+            {/* Scrolling carousel not working  */}
+            {/* <div className='relative overflow-hidden w-64'>
+                <div className=" flex animate-scroll space-x-4 overflow-x-auto rounded-box w-full p-2">
+                    {product?.images?.map((image, i) => (
+                        <div className="carousel-item shrink-0 w-64" key={i}>
+                            <img
+                                src={image}
+                                className="w-full h-40 rounded-lg object-contain"
+                                alt={`Slide ${i + 1}`}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div> */}
+
+
+
+            {console.log("Product images", product.images)}
             <img src={product?.images?.[0]} className='flex items-center w-auto h-auto md:col-span-1' alt="Product Image" />
             <div className='flex flex-col md:col-span-2 space-y-1'>
                 <h4 className='text-3xl font-medium'>{product.title}</h4>
@@ -117,7 +137,7 @@ function ProductDetails() {
                     <p className='text-red-500 font-normal'>{product?.returnPolicy}</p>
                     <button className="btn btn-sm mt-1  btn-success">Add to Cart</button>
 
-                    <p className='mt-2'>Reviews <span onClick={handleReviews} className='font-semibold text-red-700 hover:cursor-pointer hover:text-blue-800 mr-4'>({product?.reviews?.length})<span className='px-2'><FontAwesomeIcon className='text-2xl animate-bounce' icon={isReviewShowing ? faCaretUp : faCaretDown} /></span> </span></p>
+                    <p className='mt-2'>Reviews <span onClick={handleReviews} className='font-semibold text-red-700 hover:cursor-pointer hover:text-blue-800 mr-4'>({product?.reviews?.length})<span className='px-2 transform translate-y-1.5'><FontAwesomeIcon className='text-2xl animate-bounce' icon={isReviewShowing ? faCaretUp : faCaretDown} /></span> </span></p>
                     <div className='h-48  overflow-y-auto p-2 rounded-md'>
                         {
                             isReviewShowing && (

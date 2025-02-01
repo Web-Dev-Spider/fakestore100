@@ -59,11 +59,12 @@ function Categories() {
 
             {/* Scrollbar control button for mobile screens */}
 
-            <button onClick={() => setIsSidebarOpen(prev => !prev)} className='fixed md:hidden bottom-4 right-4  p-2 bg-slate-400 rounded-lg shadow-lg z-55'>
+            <button onClick={() => setIsSidebarOpen(prev => !prev)} className='fixed md:hidden bottom-4 right-4  p-2 bg-slate-800 text-white rounded-lg shadow-lg z-55'>
                 {isSidebarOpen ? 'Close' : 'Menu'}
             </button>
+            {/* the following dynamic rendering is not completed */}
+            {/* {isSidebarOpen ? "" : <h3 className='font-medium md:hidden'>Click on the menu and select Categories</h3>} */}
             <div className='flex-1 md:ml-53 md:mt-2 p-2 overflow-auto '>
-
                 <CategoryDisplay items={categoryItems} itemCategory={catHead} />
             </div>
         </div>
