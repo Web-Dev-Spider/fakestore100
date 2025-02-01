@@ -2,11 +2,21 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faClose, faHouse, faStore } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import CartPage from '../pages/CartPage'
+
 
 function Header() {
     const [isMobileView, setIsMobileView] = useState(false)
     const closeMenu = () => setIsMobileView(false);
     const mobNavLinkClass = "flex px-4 py-2 hover:bg-slate-800 hover:text-white duration-300"
+    const cartItems = useSelector((state) => state.cart.value)
+    const [isDrawerShowing, setIsDrawerShowing] = useState(false)
+
+    const handleDrawer = () => {
+        setIsDrawerShowing((prev) => !prev)
+    }
+    console.log(cartItems)
     return (
         <div className='fixed w-full top-0 left-0 z-50'>
             <nav className=' p-2 bg-slate-400 flex justify-between items-center md:px-30 transition-all duration-500'>
@@ -19,10 +29,10 @@ function Header() {
                     <Link className='hover:text-white  ' to={'/profile'}>Profile</Link>
                 </div>
                 <span className='flex  items-center  space-x-2'>
-                    <span className='ps-15 font-semibold'>
+                    <Link to={'cart'}> <span className='w-20  text-center font-semibold'>
 
-                        <FontAwesomeIcon icon={faCartShopping} className='text-yellow-300 ps-2' /> 0
-                    </span>
+                        <FontAwesomeIcon icon={faCartShopping} className='text-yellow-300 px-2' onClick={handleDrawer} /> {cartItems.length}
+                    </span></Link>
                     <div className='hidden md:block'>
                         <Link>Login</Link>
                     </div>

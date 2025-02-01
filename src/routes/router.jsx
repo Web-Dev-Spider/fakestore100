@@ -6,6 +6,7 @@ import ProductDetails from "../pages/ProductDetails";
 import Categories from "../pages/Categories";
 import ErrorPage from "../pages/ErrorPage";
 import Loading from "../components/Loading";
+import CartPage from "../pages/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'categories/product-details/:id',
         element: <ProductDetails />
+      },
+      {
+        path: 'cart',
+        element: <CartPage />
       }
 
     ]

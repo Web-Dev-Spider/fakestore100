@@ -4,12 +4,15 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faStar, faStarHalfStroke, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart, removeFromCart } from '../features/cart/cartSlice'
 function ProductDetails() {
     const [product, setProduct] = useState({})
     const [showMore, setShowMore] = useState(false)
     const [isReviewShowing, setisReviewShowing] = useState(false)
     const { id } = useParams()
+    const dispatch = useDispatch()
+    const cartItems = useSelector((state) => state.cart.value)
 
     useEffect(() => {
         const getProduct = async () => {
@@ -135,7 +138,16 @@ function ProductDetails() {
 
                     <p>Rating : {product.rating}</p>
                     <p className='text-red-500 font-normal'>{product?.returnPolicy}</p>
-                    <button className="btn btn-sm mt-1  btn-success">Add to Cart</button>
+
+                    <button className="btn btn-sm mt-1  btn-success mr-2" onClick={() => dispatch(addToCart(product))} >Add to Cart</button>
+
+                    {
+                        cartItems.length > 1 && cartItems.some((item) => item.id == product.id) && (
+                            <button className="btn btn-sm mt-1  btn-error" onClick={() => dispatch(removeFromCart(product.id))} >Remove All</button>
+
+                        ) || <button className="btn btn-sm mt-1  btn-error" onClick={() => dispatch(removeFromCart(product.id))} >Remove </button>
+
+                    }
 
                     <p className='mt-2'>Reviews <span onClick={handleReviews} className='font-semibold text-red-700 hover:cursor-pointer hover:text-blue-800 mr-4'>({product?.reviews?.length})<span className='px-2 transform translate-y-1.5'><FontAwesomeIcon className='text-2xl animate-bounce' icon={isReviewShowing ? faCaretUp : faCaretDown} /></span> </span></p>
                     <div className='h-48  overflow-y-auto p-2 rounded-md'>
