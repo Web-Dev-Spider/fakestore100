@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faClose, faHouse, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faCartShopping, faClose, faHouse, faStore } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
     const mobNavLinkClass = "flex px-4 py-2 hover:bg-slate-800 hover:text-white duration-300"
     return (
         <div className='fixed w-full top-0 left-0 z-50'>
-            <nav className='p-2 bg-slate-400 flex justify-between items-center md:px-30 transition-all duration-500'>
+            <nav className=' p-2 bg-slate-400 flex justify-between items-center md:px-30 transition-all duration-500'>
 
                 <div className='font-bold'> <FontAwesomeIcon icon={faStore} className='mx-2' /><Link to={"/"}> <span className='hover:text-white transition duration-300'>Home</span> </Link></div>
                 <div className={`hidden md:flex  py-2 md:space-x-6  transition-all duration-300`}>
@@ -18,9 +18,15 @@ function Header() {
                     <Link className='hover:text-white  ' to={'/categories'}>Categories</Link>
                     <Link className='hover:text-white  ' to={'/profile'}>Profile</Link>
                 </div>
-                <div className='hidden md:block'>
-                    <Link>Login</Link>
-                </div>
+                <span className='flex  items-center  space-x-2'>
+                    <span className='ps-15 font-semibold'>
+
+                        <FontAwesomeIcon icon={faCartShopping} className='text-yellow-300 ps-2' /> 0
+                    </span>
+                    <div className='hidden md:block'>
+                        <Link>Login</Link>
+                    </div>
+                </span>
 
 
 
