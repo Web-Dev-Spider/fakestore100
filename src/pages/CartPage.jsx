@@ -34,7 +34,7 @@ function CartPage() {
                             />
 
                         </Link>
-                        <div className="flex flex-col w-full md:w-3/5">
+                        <div className="flex flex-col items-center w-full md:w-3/5">
                             <Link to={`/product-details/${item.id}`}>   <p className="font-semibold md:font-normal text-lg md:text-2xl">{item.title}</p>
                                 <p className="text-sm">
                                     Rating: <span className="bg-amber-300 px-2 rounded-md">{item.rating}</span>
@@ -47,9 +47,11 @@ function CartPage() {
                                 </p>
                             </Link>
                         </div>
+                        <div>
 
-                        <div id='price' className='flex flex-col md:flex-row md:justify-between md:item-center md:w-1/3 md:gap-8'>
-                            <div className="flex flex-col items-center md:items-start">
+                        </div>
+                        <div id='price' className='flex gap-12 justify-between items-stretch i md:justify-center  md:w-1/3 md:gap-8 '>
+                            <div className="flex flex-col  md:items-start">
                                 <p className="bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
                                     Limited time deal
                                 </p>
@@ -59,13 +61,15 @@ function CartPage() {
                                 <span className="font-medium text-lg">Rs {item.price}</span>
                             </div>
 
+                            <div className='flex items-end md:items-center'>
 
-                            <button
-                                className="btn btn-sm md:mt-2 btn-error mb-2 md:mb-0 md:mr-auto"
-                                onClick={() => dispatch(removeFromCart(item.id))}
-                            >
-                                Remove
-                            </button>
+                                <button
+                                    className="btn btn-sm md:mt-2 btn-error mb-2 md:mb-0 md:mr-auto"
+                                    onClick={() => dispatch(removeFromCart(item.id))}
+                                >
+                                    Remove
+                                </button>
+                            </div>
                         </div>
 
                     </div>
