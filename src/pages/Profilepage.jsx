@@ -7,7 +7,7 @@ function Profilepage() {
 
     return (
         <div>
-            {isModelOpen && <InformatinModal message1="Hello" message2="Hello2" onClose={() => setIsModelOpen(false)} />}
+            {isModelOpen && <InformatinModal message1="" message2="" onClose={() => setIsModelOpen(false)} />}
             <div className='flex  flex-col justify-center items-center'>
                 <h1 className='text-3xl font-medium' >ProfilePage</h1>
                 <h3 className='font-light text-2xl text-red-600'>Not implemented correctly</h3>

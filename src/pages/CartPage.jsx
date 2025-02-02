@@ -8,7 +8,7 @@ function CartPage() {
     const cartItems = useSelector((state) => state.cart.value);
 
     return (
-        <div className="m-3 bg-white w-full p-3">
+        <div className="m-3 bg-white w-full p-3 md:mx-15">
             <h4 className="font-light text-2xl md:text-4xl border-b opacity-80 mb-2">Shopping Cart</h4>
 
             {cartItems.length === 0 ? (
