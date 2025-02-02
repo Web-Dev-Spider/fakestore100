@@ -20,7 +20,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <ProductDetails />
+        element: <div className="flex flex-col justify-center items-center w-full"><h3 className="font-semibold text-sm md:font-light md:text-3xl transition-all duration-300 ease-in-out">Still not decided what should be in this page..... </h3>
+          <h4 className="text-sm font-light md:font-semibold transition-all duration ease-in-out">But I like a few menu items in the menu bar...</h4></div>
       },
       {
         path: 'categories',

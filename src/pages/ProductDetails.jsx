@@ -145,7 +145,7 @@ function ProductDetails() {
                         cartItems.length > 1 && cartItems.some((item) => item.id == product.id) && (
                             <button className="btn btn-sm mt-1  btn-error" onClick={() => dispatch(removeFromCart(product.id))} >Remove All</button>
 
-                        ) || <button className="btn btn-sm mt-1  btn-error" onClick={() => dispatch(removeFromCart(product.id))} >Remove </button>
+                        ) || cartItems.length == 1 && <button className="btn btn-sm mt-1  btn-error" onClick={() => dispatch(removeFromCart(product.id))} >Remove </button>
 
                     }
 

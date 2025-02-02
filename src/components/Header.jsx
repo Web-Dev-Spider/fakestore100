@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faClose, faHouse, faStore } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
@@ -8,10 +8,24 @@ import CartPage from '../pages/CartPage'
 
 function Header() {
     const [isMobileView, setIsMobileView] = useState(false)
+    const [isDrawerShowing, setIsDrawerShowing] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('')
+
+
+    useEffect(() => {
+        try {
+
+
+
+        } catch (error) {
+
+        }
+
+    }, [searchTerm])
+
     const closeMenu = () => setIsMobileView(false);
     const mobNavLinkClass = "flex px-4 py-2 hover:bg-slate-800 hover:text-white duration-300"
     const cartItems = useSelector((state) => state.cart.value)
-    const [isDrawerShowing, setIsDrawerShowing] = useState(false)
 
     const handleDrawer = () => {
         setIsDrawerShowing((prev) => !prev)
@@ -28,6 +42,11 @@ function Header() {
                     <Link className='hover:text-white  ' to={'/categories'}>Categories</Link>
                     <Link className='hover:text-white  ' to={'/profile'}>Profile</Link>
                 </div>
+
+                {/* *********** I need to add search feature in future  */}
+                {/* <input type="text" placeholder='Search items...' /> */}
+
+
                 <span className='flex  items-center  space-x-2'>
                     <Link to={'cart'}> <span className='w-20  text-center font-semibold'>
 
