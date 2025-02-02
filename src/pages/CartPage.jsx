@@ -10,7 +10,7 @@ function CartPage() {
     const totalPrice = cartItems.reduce((total, item) => (total + item.price), 0)
     console.log("Total price of the items in the cart", totalPrice)
     return (
-        <div className="m-3 bg-white w-full p-3 md:mx-15">
+        <div className="m-3 bg-white w-full  px-1 md:p-5 md:mx-15 shadow-xl shadow-emerald-950">
             <div className='flex flex-col md:flex-row justify-between items-center border-b opacity-80 mb-2'>
                 <h4 className="font-light text-2xl md:text-4xl ">Shopping Cart</h4>
                 <h4 className='font-medium text-2xl md:text-1xl'><span className='text-sm font-bold'>Total: $ </span>{totalPrice}</h4>
@@ -23,7 +23,7 @@ function CartPage() {
                 cartItems.map((item) => (
                     <div
                         key={item.id}
-                        className="border-b-[1.5px] border-gray-200 w-full flex flex-col md:flex-row items-center p-3 gap-4"
+                        className="border-b-[1.5px] border-gray-200 w-full flex flex-col md:flex-row items-center p-3 gap-1 md:gap-4"
                     >
 
                         <Link to={`/product-details/${item.id}`}>
@@ -34,7 +34,7 @@ function CartPage() {
                             />
 
                         </Link>
-                        <div className="flex flex-col w-full md:w-2/3">
+                        <div className="flex flex-col w-full md:w-3/5">
                             <Link to={`/product-details/${item.id}`}>   <p className="font-semibold md:font-normal text-lg md:text-2xl">{item.title}</p>
                                 <p className="text-sm">
                                     Rating: <span className="bg-amber-300 px-2 rounded-md">{item.rating}</span>
@@ -61,7 +61,7 @@ function CartPage() {
 
 
                         <button
-                            className="btn btn-sm mt-2 btn-error md:ml-auto"
+                            className="btn btn-sm md:mt-2 btn-error mb-2 md:mb-0 md:ml-auto"
                             onClick={() => dispatch(removeFromCart(item.id))}
                         >
                             Remove
