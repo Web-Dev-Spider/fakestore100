@@ -13,7 +13,7 @@ function CartPage() {
         <div className="m-3 bg-white w-full  px-1 md:p-5 md:mx-15 shadow-xl shadow-emerald-950">
             <div className='flex flex-col md:flex-row justify-between items-center border-b opacity-80 mb-2'>
                 <h4 className="font-light text-2xl md:text-4xl ">Shopping Cart</h4>
-                <h4 className='font-medium text-2xl md:text-1xl'><span className='text-sm font-bold'>Total: $ </span>{totalPrice}</h4>
+                <h4 className='font-medium text-2xl md:text-1xl'><span className='text-sm font-bold'>Total: $ </span><span className='bg-yellow-300 rounded-sm px-1 md:p-2'>{totalPrice.toFixed(2)}</span></h4>
             </div>
 
             {cartItems.length === 0 ? (
@@ -48,24 +48,26 @@ function CartPage() {
                             </Link>
                         </div>
 
+                        <div id='price' className='flex flex-col md:flex-row md:justify-between md:item-center md:w-1/3 md:gap-8'>
+                            <div className="flex flex-col items-center md:items-start">
+                                <p className="bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
+                                    Limited time deal
+                                </p>
+                                <span className="text-gray-700 text-sm mt-1">
+                                    {item.discountPercentage}% discount
+                                </span>
+                                <span className="font-medium text-lg">Rs {item.price}</span>
+                            </div>
 
-                        <div className="flex flex-col items-center md:items-start">
-                            <p className="bg-red-600 text-white text-xs px-2 py-1 rounded-sm">
-                                Limited time deal
-                            </p>
-                            <span className="text-gray-700 text-sm mt-1">
-                                {item.discountPercentage}% discount
-                            </span>
-                            <span className="font-medium text-lg">Rs {item.price}</span>
+
+                            <button
+                                className="btn btn-sm md:mt-2 btn-error mb-2 md:mb-0 md:mr-auto"
+                                onClick={() => dispatch(removeFromCart(item.id))}
+                            >
+                                Remove
+                            </button>
                         </div>
 
-
-                        <button
-                            className="btn btn-sm md:mt-2 btn-error mb-2 md:mb-0 md:ml-auto"
-                            onClick={() => dispatch(removeFromCart(item.id))}
-                        >
-                            Remove
-                        </button>
                     </div>
                 ))
             )}
