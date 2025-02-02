@@ -4,12 +4,17 @@ import { removeFromCart } from '../features/cart/cartSlice';
 import { Link } from 'react-router-dom';
 
 function CartPage() {
+    console.log('in the cart page')
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.value);
-
+    const totalPrice = cartItems.reduce((total, item) => (total + item.price), 0)
+    console.log("Total price of the items in the cart", totalPrice)
     return (
         <div className="m-3 bg-white w-full p-3 md:mx-15">
-            <h4 className="font-light text-2xl md:text-4xl border-b opacity-80 mb-2">Shopping Cart</h4>
+            <div className='flex flex-col md:flex-row justify-between items-center border-b opacity-80 mb-2'>
+                <h4 className="font-light text-2xl md:text-4xl ">Shopping Cart</h4>
+                <h4 className='font-medium text-2xl md:text-1xl'><span className='text-sm font-bold'>Total: $ </span>{totalPrice}</h4>
+            </div>
 
             {cartItems.length === 0 ? (
                 <p className="text-center text-gray-500 mt-5">Your cart is empty! </p>

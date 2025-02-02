@@ -56,7 +56,7 @@ function Categories() {
     }
     return (
         <div>
-            {isLoadingCategories ? <div className='flex h-screen items-center'><LoadingIcon /></div> : (<div className='flex flex-col md:flex-row'>
+            {isLoadingCategories ? <div className='flex h-screen items-center justify-center'><LoadingIcon /></div> : (<div className='flex flex-col md:flex-row'>
 
 
                 <div className={`overflow-y-scroll shadow-lg w-50 h-[calc(100vh-6rem)] z-40 fixed overflow-x-hidden md:shadow-none transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
