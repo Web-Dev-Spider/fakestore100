@@ -7,6 +7,7 @@ import Categories from "../pages/Categories";
 import ErrorPage from "../pages/ErrorPage";
 import Loading from "../components/Loading";
 import CartPage from "../pages/CartPage";
+import InformatinModal from "../components/InformatinModal";
 
 const router = createBrowserRouter([
   {
