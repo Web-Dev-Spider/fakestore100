@@ -35,7 +35,7 @@ function ProductCard({ product }) {
 
 
     return (
-        <div className='bg-white w-60 max-h-100 p-2 rounded-xl transition-all transform hover:-translate-y-2  duration-300 hover:shadow-2xl'>
+        <div className='bg-white mx-4 md:mx-2 md:w-60  max-h-100 p-2 rounded-xl transition-all transform hover:-translate-y-2  duration-300 hover:shadow-2xl'>
             <img src={product.images[0]} alt="Product Image" className='h-40 w-55 object-contain rounded-xl mx-auto px-1' />
             <div className='flex flex-col'>
                 <h3 className='font-semibold h-12 py-2'>{product?.title}</h3>
